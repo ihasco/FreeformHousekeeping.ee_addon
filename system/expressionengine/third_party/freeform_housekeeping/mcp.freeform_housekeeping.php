@@ -2,7 +2,7 @@
 
 class Freeform_housekeeping_mcp {
 
-    public $version = '1.1';
+    public $version = '1.0';
 
     public function __construct()
     {
