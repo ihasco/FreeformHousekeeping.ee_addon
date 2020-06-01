@@ -10,5 +10,5 @@ class Freeform_housekeeping_mcp {
         $this->EE =& get_instance();
     }
 }
-/* End of file mcp.recently_viewed.php */
-/* Location: ./system/expressionengine/third_party/modules/freeform_housekeeping/mcp.freeform_housekeeping.php */
+/* End of file mcp.freeform_housekeeping.php */
+/* Location: ./system/user/addons/freeform_housekeeping/mcp.freeform_housekeeping.php */

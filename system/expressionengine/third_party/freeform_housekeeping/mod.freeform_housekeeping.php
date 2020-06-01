@@ -1,15 +1,19 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+// Get config file
+require_once PATH_THIRD.'freeform_housekeeping/config.php';
+
 class Freeform_housekeeping {
 
-    public $_housekeep_after = 3; // 3 months
-    public $_housekeep_exclude_form_ids = []; // An array of form ids to exclude from housekeeping
+    public $housekeep_after = 12; // i.e. 12 months
 
 	public function __construct() {
-		// Make a local reference to the ExpressionEngine super object
-		$this->EE =& get_instance();
+
 	}
 
+	// --------------------------------------------------------------------
+
+	/* http://www.ihasco.co.uk?ACT=171 */
     function clean_old_entries()
     {
 
@@ -21,7 +25,7 @@ class Freeform_housekeeping {
         foreach ($form_ids->result_array() AS $freeform) {
 
             // Select all rows where entry_date is greater than the deletion period
-            $get_entries = "SELECT * FROM exp_freeform_form_entries_" . $freeform['form_id'] . " WHERE FROM_UNIXTIME(entry_date) + INTERVAL " . $this->_housekeep_after . " MONTH < NOW()";
+            $get_entries = "SELECT * FROM exp_freeform_form_entries_" . $freeform['form_id'] . " WHERE FROM_UNIXTIME(entry_date) + INTERVAL " . $this->housekeep_after . " MONTH < NOW()";
             $entry_result = ee()->db->query($get_entries);
 
             $entries = $entry_result->result_array();
